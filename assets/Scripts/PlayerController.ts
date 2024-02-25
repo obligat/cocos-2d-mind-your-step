@@ -28,7 +28,19 @@ export class PlayerController extends Component {
   private _targetPos: Vec3 = new Vec3();
 
   start() {
-    input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+    // input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+  }
+
+  // 动态开启和关闭角色对鼠标消息的监听
+  setInputActive(active: boolean) {
+    if (active) {
+      input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+    } else {
+      input.off(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+    }
+  }
+
+  reset() {
   }
 
   update(deltaTime: number) {
